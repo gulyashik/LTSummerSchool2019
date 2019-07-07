@@ -100,12 +100,16 @@ namespace LTRegistratorApi.Controllers
 
         public class RegisterDto
         {
-            [Required]
+            [Required(ErrorMessage = "EMPTY_EMAIL")]
+            [EmailAddress(ErrorMessage = "INVALID_EMAIL")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "EMPTY_PASSWORD")]
             [StringLength(100, ErrorMessage = "PASSWORD_MIN_LENGTH", MinimumLength = 6)]
             public string Password { get; set; }
+
+            [Compare("Password")]
+            public string ConfirmPassword { get; set; }
         }
     }
 }
