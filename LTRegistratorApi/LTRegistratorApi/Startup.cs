@@ -41,7 +41,7 @@ namespace LTRegistratorApi
             }
             else
             {
-                app.UseHsts();
+                app.UseHsts(); //use STS for https (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
             }
 
             app.UseHttpsRedirection();

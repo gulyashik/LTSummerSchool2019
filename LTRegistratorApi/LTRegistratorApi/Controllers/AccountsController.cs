@@ -65,7 +65,7 @@ namespace LTRegistratorApi.Controllers
             throw new ApplicationException("UNKNOWN_ERROR");
         }
 
-        private async Task<object> GenerateJwtToken(string email, IdentityUser user)
+        private async Task<object> GenerateJwtToken(string email, IdentityUser user) //async?
         {
             var claims = new List<Claim>
             {
@@ -96,7 +96,6 @@ namespace LTRegistratorApi.Controllers
 
             [Required]
             public string Password { get; set; }
-
         }
 
         public class RegisterDto
@@ -105,6 +104,7 @@ namespace LTRegistratorApi.Controllers
             public string Email { get; set; }
 
             [Required]
+            [StringLength(100, ErrorMessage = "PASSWORD_MIN_LENGTH", MinimumLength = 6)]
             public string Password { get; set; }
         }
     }
